@@ -1,0 +1,70 @@
+<!doctype html>
+<html>
+
+<head>
+    <title>ScrollToContent</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=No">
+    <style>
+    	section{
+    		height: 50vh;
+    	}
+    	#section1{
+    		background-color: #eb05ba;
+    	}
+    	#section2{
+    		background-color: #be0f45;
+    	}
+    	#section3{
+    		background-color: #eb0f45;
+    	}
+    	ul li{
+    		cursor: pointer;
+    		margin-bottom: 10px;
+    	}
+    	body{
+    		margin: 0;
+    	}
+    </style>
+</head>
+
+<body>
+    <main>
+    	<ul>
+    		<li data-id="section1" class="scroll-to-content">section1</li>
+    		<li data-id="section2" class="scroll-to-content">section2</li>
+    		<li data-id="section3" class="scroll-to-content">section3</li>
+    	</ul>
+	    <section id="section1">
+	        <h2>section1</h2>
+	    </section>
+	    <section id="section2">
+	        <h2>section2</h2>
+	    </section>
+	    <section id="section3">
+	        <h2>section3</h2>
+	    </section>
+	    <section>
+	        <h2>section4</h2>
+	    </section>
+	</main>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
+    <script>
+    	$(document).ready(function(){
+    		if ($('.scroll-to-content').length) {
+	    		$('.scroll-to-content').on('click',function(){
+	    			console.log('yes');
+	    			var section = $(this).attr('data-id');
+	    			console.log(section);
+	    			var offsetTop = $('#' + section).offset().top;
+	    			console.log(offsetTop);
+	    			$('body,html').animate({
+	    				scrollTop : offsetTop
+	    			},1000);	
+	    		});
+	    	}
+    	});
+    </script>
+</body>
+
+</html>
